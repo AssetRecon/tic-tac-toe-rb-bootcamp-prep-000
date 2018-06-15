@@ -87,13 +87,13 @@ def over?(board)
   won?(board) || full?(board)
 end
   
-def winner(board)
-  if won?(board).class == Array
-    return board[won?(board)[0]]
-  else
-  return nil
-  end
-end
+#def winner(board)
+ # if won?(board).class == Array
+  #  return board[won?(board)[0]]
+  #else
+  #return nil
+  #end
+#end
 
 def winner(board)
   if winning_combo = won?(board)
