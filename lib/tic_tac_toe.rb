@@ -60,7 +60,7 @@ def current_player(board)
   turn_count(board) % 2 == 0 ? "X" : "O"
 end
 
-  def won?(board)
+def won?(board)
     WIN_COMBINATIONS.detect do |combination|
   
       (board[combination[0]] == "X" && board[combination[1]] == "X" && board[combination[2]] == "X") ||
