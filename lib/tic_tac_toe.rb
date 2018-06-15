@@ -8,6 +8,8 @@ WIN_COMBINATIONS = [
   [0,4,8],
   [2,4,6],
   ]
+
+
  
 
 def display_board(board)
@@ -30,16 +32,8 @@ def position_taken?(board, location)
   board[location] != " " && board[location] != ""
 end
 
-#def valid_move?(board, position)
- # position.between?(0,8) && !position_taken?(board, position)
-#end
-
 def valid_move?(board, position)
-  if position.between?(0,8)
-    if !position_taken?(board, position)
-      true
-    end
-  end
+  position.between?(0,8) && !position_taken?(board, position)
 end
 
 
@@ -52,20 +46,13 @@ def turn(board)
     move(board,index,current_player(board))
     display_board(board)
   else
-   # turn(board)
-   gets.strip
+   turn(board)
   end
 end
 
 
 def turn_count(board)
-  counter = 0
-  board.each do |turn|
-    if turn == "X" || turn == "O"
-      counter += 1
-    end
- end
- return counter
+  board.count{|token| token == "X" || token == "O"}
 end
 
 
@@ -108,16 +95,15 @@ def winner(board)
   end
 end
   
-  
-def play(board)
-  until over?(board)
-    current_player(board)
-   turn(board)
+  def play(board)
+  while !over?(board)
+    turn(board)
   end
-  if winner(board)
+  if won?(board)
     puts "Congratulations #{winner(board)}!"
   elsif draw?(board)
     puts "Cat's Game!"
   end
   
 end
+
