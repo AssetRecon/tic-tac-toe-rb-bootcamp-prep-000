@@ -32,8 +32,8 @@ def position_taken?(board, location)
   board[location] != " " && board[location] != ""
 end
 
-def valid_move?(board, position)
-  position.between?(0,8) && !position_taken?(board, position)
+def valid_move?(board, index)
+  index.between?(0,8) && !position_taken?(board, index)
 end
 
 
