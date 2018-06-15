@@ -60,18 +60,27 @@ def current_player(board)
   turn_count(board) % 2 == 0 ? "X" : "O"
 end
 
-  def won?(board)
-    WIN_COMBINATIONS.detect do |combination|
-  
-      (board[combination[0]] == "X" && board[combination[1]] == "X" && board[combination[2]] == "X") ||
-         (board[combination[0]] == "O" && board[combination[1]] == "O" && board[combination[2]] == "O")
+#  def won?(board)
+#    WIN_COMBINATIONS.detect do |combination|
+#  
+#      (board[combination[0]] == "X" && board[combination[1]] == "X" && board[combination[2]] == #"X") ||
+   #      (board[combination[0]] == "O" && board[combination[1]] == "O" && board[combination[2]] == "O")
         
-        return combination
+      #  return combination
         
-        else
+       # else
           
-        false 
-    end
+        #false 
+    #end
+  #end
+#end
+
+
+def won?(board)
+  WIN_COMBINATIONS.detect do |combo|
+    board[combo[0]] == board[combo[1]] &&
+    board[combo[1]] == board[combo[2]] &&
+    position_taken?(board, combo[0])
   end
 end
 
