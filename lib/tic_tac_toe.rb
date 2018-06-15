@@ -88,19 +88,15 @@ def over?(board)
   won?(board) || draw?(board)
 end
   
-#def winner(board)
- # if won?(board).class == Array
-  #  return board[won?(board)[0]]
-  #else
-  #return nil
-  #end
-#end
-
 def winner(board)
-  if winning_combo = won?(board)
-    board[winning_combo.first]
+  if won?(board).class == Array
+    return board[won?(board)[0]]
+  else
+  return nil
   end
 end
+
+
   
   def play(board)
   while !over?(board)
